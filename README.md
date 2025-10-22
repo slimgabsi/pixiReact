@@ -1,73 +1,67 @@
-# React + TypeScript + Vite
+# ⚛️ React + TypeScript + Vite + Pixi.js Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal yet powerful setup to build modern **React** applications with **Vite**, **TypeScript**, and **Pixi.js** (via `@pixi/react`). It supports hot module replacement (HMR), strict linting, and reusable Pixi components.
 
-Currently, two official plugins are available:
+## 📦 Installed Packages
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- `react@^19.1.1`
+- `react-dom@^19.1.1`
+- `vite`
+- `typescript`
+- `pixi.js@^8.14.0`
+- `@pixi/react@^8.0.3`
+- `pixi-viewport@^6.0.3`
 
-## React Compiler
+## ⚡ Vite React Plugins
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+You can choose between two official plugins for React Fast Refresh:
 
-## Expanding the ESLint configuration
+- [`@vitejs/plugin-react`](https://github.com/vitejs/vite-plugin-react): Uses **Babel** (or [oxc](https://oxc.rs) with [rolldown-vite](https://vite.dev/guide/rolldown))
+- [`@vitejs/plugin-react-swc`](https://github.com/vitejs/vite-plugin-react-swc): Uses **SWC** for faster compilation
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🧠 React Compiler (Optional)
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+The [React Compiler](https://react.dev/learn/react-compiler/installation) is **not enabled** by default due to its current impact on dev and build performance. If needed, follow the [installation guide](https://react.dev/learn/react-compiler/installation).
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🎮 Pixi.js Integration with React
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+This template includes **Pixi.js** support using `@pixi/react` to render interactive canvas scenes within your React app. It supports:
 
-```js
+- `<Stage>`, `<Sprite>`, and other core Pixi components
+- Integration with `pixi-viewport` for camera control, panning, zooming, etc.
+- Fully typed reusable components powered by React and TypeScript
+
+Great for games, data visualization, interactive graphics, and more.
+
+---
+
+## ✅ ESLint Setup
+
+### Recommended ESLint Configuration
+
+If you're building a production-grade application, it's recommended to enable **type-aware** lint rules:
+
+```ts
 // eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
 export default defineConfig([
   globalIgnores(['dist']),
   {
     files: ['**/*.{ts,tsx}'],
     extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
+      // Type-aware rules
+      tseslint.configs.recommendedTypeChecked,
+      // Or stricter:
+      // tseslint.configs.strictTypeChecked,
+      // Optional: stylistic rules
+      tseslint.configs.stylisticTypeChecked,
     ],
     languageOptions: {
       parserOptions: {
         project: ['./tsconfig.node.json', './tsconfig.app.json'],
         tsconfigRootDir: import.meta.dirname,
       },
-      // other options...
     },
   },
 ])
-```
