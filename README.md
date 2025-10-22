@@ -29,7 +29,6 @@ The [React Compiler](https://react.dev/learn/react-compiler/installation) is **n
 
 This template includes **Pixi.js** support using `@pixi/react` to render interactive canvas scenes within your React app. It supports:
 
-- `<Stage>`, `<Sprite>`, and other core Pixi components
 - Integration with `pixi-viewport` for camera control, panning, zooming, etc.
 - Fully typed reusable components powered by React and TypeScript
 
